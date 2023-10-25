@@ -26,7 +26,7 @@ namespace Shop.Controllers
             if(category == null)
             {
                 var productList = db.Products.OrderByDescending(x => x.NamePro);
-                return View(productList);
+                return View(productList); 
             }
             else
             {
