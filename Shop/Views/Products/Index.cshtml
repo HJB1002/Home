@@ -1,7 +1,5 @@
-﻿@*@model IEnumerable<Shop.Models.Product>*@
+﻿@model IEnumerable<Shop.Models.Product>
 @using Shop.Models;
-@using PagedList.Mvc;
-@model PagedList.PagedList<Product>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -29,6 +27,7 @@
         <th>
             @*@Html.DisplayNameFor(model => model.Category1.NameCate)*@ Category
         </th>
+        <th>Quantity</th>
         <th></th>
     </tr>
 
@@ -48,6 +47,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Category1.NameCate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }, new {@class = "btn btn-default"}) |
@@ -75,7 +77,3 @@
             }
     </div>
 </div>
-Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
-<dvi class="MenuPage">
-    @Html.PagedListPager(Model, page =>Url.Action("Index", new {page = page}))
-</dvi>

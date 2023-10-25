@@ -7,8 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Shop.Models;
-using PagedList;
-using PagedList.Mvc;
 using Antlr.Runtime.Tree;
 
 namespace Shop.Controllers
@@ -22,22 +20,19 @@ namespace Shop.Controllers
             return View(list);
         }
         // GET: Products
-        public ActionResult Index(string category, int? page, double min = double.MinValue, double max = double.MaxValue)
+        public ActionResult Index(string category)
         {
-            int pageSize = 4;
-            int pageNum = (page ?? 1);
+           
             if(category == null)
             {
                 var productList = db.Products.OrderByDescending(x => x.NamePro);
-                return View(productList.ToPagedList(pageNum, pageSize));
+                return View(productList);
             }
             else
             {
-                var productList = db.Products.OrderByDescending(x => x.NamePro).Where(p => p.Category == category);
+                var productList = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == category);
                 return View(productList);
             }
-            //var products = db.Products.Include(p => p.Category1);
-            //return View(products.ToList());
 
         }
 
