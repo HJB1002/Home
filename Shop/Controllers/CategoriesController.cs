@@ -16,9 +16,12 @@ namespace Shop.Controllers
         private ShopEntities db = new ShopEntities();
 
         // GET: Categories
-        public ActionResult Index()
+        public ActionResult Index(string _name)
         {
+            if(_name == null)
             return View(db.Categories.ToList());
+            else 
+                return View(db.Categories.Where(s=>s.NameCate.Contains(_name)).ToList());
         }
 
         // GET: Categories/Details/5
