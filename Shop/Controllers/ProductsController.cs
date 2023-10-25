@@ -16,7 +16,11 @@ namespace Shop.Controllers
     public class ProductsController : Controller
     {
         private ShopEntities db = new ShopEntities();
-
+        public ActionResult SearchOption(double min = double.MinValue, double max = double.MaxValue)
+        {
+            var list = db.Products.Where(s=>(double)s.Price >= min && (double)s.Price <= max).ToList();
+            return View(list);
+        }
         // GET: Products
         public ActionResult Index(string category, int? page, double min = double.MinValue, double max = double.MaxValue)
         {
@@ -144,5 +148,6 @@ namespace Shop.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

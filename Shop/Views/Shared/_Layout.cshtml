@@ -58,11 +58,18 @@
     </div>
     <div class="container-fluid body-content">
         <div class="col-md-2">
+            <ul style="list-style-type:none">
+                <li>
+                    <a href="/Products/SearchOption" class="btn btn-default">Search theo giá</a>
+                </li>
+            </ul>
             @{ Html.RenderAction("CategoryPartial", "Categories");}
+
         </div>
         <div class="col-md-10" id="div-content">
             @RenderBody();
         </div>
+
     </div>
     <div id="div_footer">
         <p>&copy; @DateTime.Now.Year - My ASP>NET Application</p>
