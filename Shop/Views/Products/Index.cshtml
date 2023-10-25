@@ -1,5 +1,7 @@
-﻿@model IEnumerable<Shop.Models.Product>
-
+﻿@*@model IEnumerable<Shop.Models.Product>*@
+@using Shop.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Product>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,19 +15,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NamePro)
+            @*@Html.DisplayNameFor(model => model.NamePro)*@ Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DecriptionPro)
+            @*@Html.DisplayNameFor(model => model.DecriptionPro)*@ Decription
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            @*@Html.DisplayNameFor(model => model.Price)*@ Price
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ImagePro)
+            @*@Html.DisplayNameFor(model => model.ImagePro)*@ Image
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Category1.NameCate)
+            @*@Html.DisplayNameFor(model => model.Category1.NameCate)*@ Category
         </th>
         <th></th>
     </tr>
@@ -73,3 +75,7 @@
             }
     </div>
 </div>
+Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+<dvi class="MenuPage">
+    @Html.PagedListPager(Model, page =>Url.Action("Index", new {page = page}))
+</dvi>
