@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", null, new {@class="btn btn-default"})
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" })
 </p>
 <table class="table">
     <tr>
@@ -31,49 +31,50 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NamePro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DecriptionPro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImagePro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category1.NameCate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }, new {@class = "btn btn-default"}) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductID }, new{@class="btn btn-default"}) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID }, new { @class = "btn btn-default" })
-            <a href="/ShoppingCart/AddToCart/@item.ProductID" class="btn btn-default">Buy</a>
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamePro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DecriptionPro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImagePro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category1.NameCate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, new { @class = "btn btn-default" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProductID }, new { @class = "btn btn-default" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductID }, new { @class = "btn btn-default" })
+                <a href="/ShoppingCart/AddToCart/@item.ProductID" class="btn btn-default">Buy</a>
+            </td>
+        </tr>
+    }
 
 </table>
 <div class="container">
     <div class="row">
-        @foreach(var pro in Model)
-            {
-                <div class="col-sm-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="card-pro">
-                        <p>@Html.DisplayFor(model => pro.ProductID)</p>
-                        <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
-                        <p>@Html.DisplayFor(model => pro.NamePro)</p>
-                        <p>@Html.DisplayFor(model => pro.Price)</p>
-                        <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-default">Buy</a>
-                    </div>
+        @foreach (var pro in Model)
+        {
+            <div class="col-sm-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card-pro">
+                    <p>@Html.DisplayFor(model => pro.ProductID)</p>
+                    <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
+                    <p>@Html.DisplayFor(model => pro.NamePro)</p>
+                    <p>@Html.DisplayFor(model => pro.Price)</p>
+                    <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-default">Buy</a>
                 </div>
-            }
+            </div>
+        }
     </div>
 </div>
