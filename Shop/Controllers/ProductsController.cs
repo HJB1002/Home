@@ -17,8 +17,9 @@ namespace Shop.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.Category1);
-            return View(products.ToList());
+            //var products = db.Products.Include(p => p.Category1);
+            //return View(products.ToList());
+            return View(db.Products.ToList());
         }
 
         // GET: Products/Details/5
