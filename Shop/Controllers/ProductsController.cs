@@ -22,11 +22,11 @@ namespace Shop.Controllers
         // GET: Products
         public ActionResult Index(string category)
         {
-           
-            if(category == null)
+
+            if (category == null)
             {
                 var productList = db.Products.OrderByDescending(x => x.NamePro);
-                return View(productList); 
+                return View(productList);
             }
             else
             {
