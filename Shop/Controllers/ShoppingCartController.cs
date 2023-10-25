@@ -93,6 +93,11 @@ namespace Shop.Controllers
                     _orderdetail.UnitPrice = item._quantity;
                     _orderdetail.Quantity = item._quantity;
                     database.OrderDetails.Add(_orderdetail);
+                    foreach(var p in database.Products.Where(s=>s.ProductID == _orderdetail.IDProduct))
+                    {
+                        var update_quan_pro = p.Quantity - item._quantity;
+                        p.Quantity = update_quan_pro;
+                    }
                 }
                 database.SaveChanges();
                 cart.ClearCart();

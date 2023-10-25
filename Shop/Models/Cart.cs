@@ -39,7 +39,11 @@ namespace Shop.Models
         {
             var item = items.Find(s => s._product.ProductID == id);
             if (item != null)
-                item._quantity = _newquan;
+            {
+                if (items.Find(s => s._product.Quantity > _newquan) != null)
+                    item._quantity = _newquan;
+                else item._quantity = 1;
+            }
         }
         public void Remove_CartItem(int id)
         {
