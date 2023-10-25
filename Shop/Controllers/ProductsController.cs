@@ -12,7 +12,7 @@ using Antlr.Runtime.Tree;
 namespace Shop.Controllers
 {
     public class ProductsController : Controller
-    {
+    { 
         private ShopEntities db = new ShopEntities();
         public ActionResult SearchOption(double min = double.MinValue, double max = double.MaxValue)
         {
