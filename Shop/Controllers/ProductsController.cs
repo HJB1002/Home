@@ -33,7 +33,19 @@ namespace Shop.Controllers
                 var productList = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == category);
                 return View(productList);
             }
-
+        }
+        public ActionResult xemTatCa(string category)
+        {
+            if (category == null)
+            {
+                var productList = db.Products.OrderByDescending(x => x.NamePro);
+                return View(productList);
+            }
+            else
+            {
+                var productList = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == category);
+                return View(productList);
+            }
         }
 
         // GET: Products/Details/5

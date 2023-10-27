@@ -25,14 +25,13 @@
             color:grey;
         }
 </style>
-<ul style="list-style-type:none" id="div-u">
+<ul class="nav navbar-nav">
     @{
         foreach (var item in Model)
         {
-            <li class="div-cate">
-                @Html.ActionLink(item.NameCate, "Index", "Products", new { category = item.IDCate.Trim() }, "")
+            <li>
+                @Html.ActionLink(item.NameCate, "xemTatCa", "Products", new { category = item.IDCate.Trim() }, "")
             </li>
-            <hr />
         }
     }
 </ul>

@@ -33,8 +33,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                    @{ Html.RenderAction("CategoryPartial", "Categories");}
+
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -63,11 +65,10 @@
                     <a href="/Products/SearchOption" class="btn btn-default">Search theo giá</a>
                 </li>
             </ul>
-            @{ Html.RenderAction("CategoryPartial", "Categories");}
 
         </div>
         <div class="col-md-10" id="div-content">
-            @RenderBody();
+            @RenderBody()
         </div>
 
     </div>
