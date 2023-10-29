@@ -9,6 +9,7 @@
 
 <p>
     @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Create New (with image)", "UploadProduct", null, new {@class = "btn btn-default"})
 </p>
 <table class="table">
     <tr>
@@ -44,7 +45,8 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImagePro)
+                @*@Html.DisplayFor(modelItem => item.ImagePro)*@
+                <img src="@Url.Content(item.ImagePro)" height="100" width="100" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Category1.NameCate)

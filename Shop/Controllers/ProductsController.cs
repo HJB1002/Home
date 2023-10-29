@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Shop.Models;
 using Antlr.Runtime.Tree;
+using System.IO;
 
 namespace Shop.Controllers
 {
@@ -155,6 +156,29 @@ namespace Shop.Controllers
             }
             base.Dispose(disposing);
         }
-
+        public ActionResult UploadProduct()
+        {
+            ViewBag.Category = new SelectList(db.Categories, "IDCate", "NameCate");
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UploadProduct([Bind(Include = "ProductID, NamePro, DecriptionPro, Category, Price, ImagePro, UploadImage")] Product product)
+        {
+            if(ModelState.IsValid)
+            {
+                if(product.UploadImage != null)
+                {
+                    string filename = Path.GetFileName(product.UploadImage.FileName);
+                    product.ImagePro = "~/Content/image/" + filename;
+                    product.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/image/"), filename));
+                }
+                db.Products.Add(product);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.Category = new SelectList(db.Categories, "IDCate", "NameCate", product.Category);
+            return View(product);
+        }
     }
 }

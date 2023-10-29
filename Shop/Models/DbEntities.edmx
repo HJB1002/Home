@@ -199,7 +199,7 @@
           <Property Name="NamePro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DecriptionPro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Category" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="true" />
           <Property Name="ImagePro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Category1" Relationship="Self.FK_Pro_Category" FromRole="Products" ToRole="Category" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__IDPro__5535A963" FromRole="Products" ToRole="OrderDetail" />
