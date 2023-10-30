@@ -110,10 +110,17 @@ namespace Shop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,NamePro,DecriptionPro,Category,Price,ImagePro")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,NamePro,DecriptionPro,Category,Price,ImagePro,UploadImage")] Product product)
         {
             if (ModelState.IsValid)
             {
+                if (product.UploadImage != null)
+                {
+                    string path = "~/Content/image/";
+                    string filename = Path.GetFileName(product.UploadImage.FileName);
+                    product.ImagePro = path + filename;
+                    product.UploadImage.SaveAs(Path.Combine(Server.MapPath(path), filename));
+                }
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -169,9 +176,10 @@ namespace Shop.Controllers
             {
                 if(product.UploadImage != null)
                 {
+                    string path = "~/Content/image/";
                     string filename = Path.GetFileName(product.UploadImage.FileName);
-                    product.ImagePro = "~/Content/image/" + filename;
-                    product.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/image/"), filename));
+                    product.ImagePro = path + filename;
+                    product.UploadImage.SaveAs(Path.Combine(Server.MapPath(path), filename));
                 }
                 db.Products.Add(product);
                 db.SaveChanges();

@@ -21,6 +21,7 @@ namespace Shop.Models
         {
             this.OrderDetails = new HashSet<OrderDetail>();
             ImagePro = "~/Content/image/shoes-default.png"; //?nh chung cho các product n?u không g?n file ?nh khi t?o product
+
         }
     
         public int ProductID { get; set; }
@@ -30,10 +31,12 @@ namespace Shop.Models
         public Nullable <decimal> Price { get; set; }
         public string ImagePro { get; set; }
         public Nullable<int> Quantity { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase UploadImage { get; set; }
+
         public virtual Category Category1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase UploadImage { get; set; }
+
     }
 }

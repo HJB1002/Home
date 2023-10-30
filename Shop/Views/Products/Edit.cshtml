@@ -8,7 +8,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -53,8 +53,10 @@
     <div class="form-group">
         @Html.LabelFor(model => model.ImagePro, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.ImagePro, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ImagePro, "", new { @class = "text-danger" })
+            @*@Html.EditorFor(model => model.ImagePro, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ImagePro, "", new { @class = "text-danger" })*@
+            @Html.TextBoxFor(model => model.UploadImage, htmlAttributes: new { @type = "File" })
+            @Html.ValidationMessageFor(model => model.UploadImage, "", new { @class = "text-danger" })
         </div>
     </div>
 

@@ -40,7 +40,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ImagePro)
+            @*@Html.DisplayFor(model => model.ImagePro)*@
+            <img src="@Url.Content(Model.ImagePro.ToString())" height="100" width="100" />
         </dd>
 
         <dt>
@@ -61,5 +62,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", new {@class="btn btn-default"})
 </p>
