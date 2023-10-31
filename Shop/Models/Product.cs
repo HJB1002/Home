@@ -20,6 +20,7 @@ namespace Shop.Models
         public Product()
         {
             this.OrderDetails = new HashSet<OrderDetail>();
+            ImagePro = "~/Content/image/shoes-default.png";
         }
     
         public int ProductID { get; set; }
