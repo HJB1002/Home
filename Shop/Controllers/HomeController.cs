@@ -30,5 +30,9 @@ namespace Shop.Controllers
         {
             return View();
         }
+        public ActionResult GioiThieu()
+        {
+            return View();
+        }
     }
 }

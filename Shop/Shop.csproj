@@ -181,10 +181,16 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\image\240_00.png.png" />
+    <Content Include="Content\image\air-force-1.png" />
     <Content Include="Content\image\icon\search-interface-symbol_54481.png" />
     <Content Include="Content\image\icon\shoes.png" />
     <Content Include="Content\image\icon\shopping-cart.png" />
+    <Content Include="Content\image\nike-air-max-97.png" />
+    <Content Include="Content\image\nike-air-max-diva.png" />
+    <Content Include="Content\image\nike-air-max.png" />
+    <Content Include="Content\image\nike-gamma-force.png" />
+    <Content Include="Content\image\nike-run-swift.png" />
+    <Content Include="Content\image\nike-wirefly.png" />
     <Content Include="Content\image\shoes-default.png" />
     <Content Include="Content\MyCSS\Nav.css" />
     <Content Include="Content\PagedList.css" />
@@ -261,9 +267,11 @@
     <Content Include="Views\Products\SearchOption.cshtml" />
     <Content Include="Views\Products\xemTatCa.cshtml" />
     <Content Include="Views\Products\UploadProduct.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\DetailProduct\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
