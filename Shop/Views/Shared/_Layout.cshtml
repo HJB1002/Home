@@ -28,13 +28,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Shop TTQ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     @*<li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     @{ Html.RenderAction("CategoryPartial", "Categories");}
 
                 </ul>
@@ -72,9 +72,10 @@
         </div>
 
     </div>
-    <div id="div_footer">
-        <p>&copy; @DateTime.Now.Year - My ASP>NET Application</p>
-        @* Đây là phần footer *@
+    @*<div id="div_footer">
+        <p>&copy; @DateTime.Now.Year</p>
+    </div>*@
+    <footer style="background-color:black; color:white;">
         <div class="col col-third text-white ">
             <h2>THÔNG TIN LIÊN HỆ </h2>
             <h3>KINGSHOES.VN Trang Thông Tin Chính Thức.</h3>
@@ -116,7 +117,10 @@
             <p>Số ĐKKD: 41N8041309 cấp ngày 17/8/2018. Nơi cấp Ủy Ban Nhân Dân Quận Tân Bình. Hộ Kinh Doanh: KINGSHOES. Hotline: 0909.300.746</p>
         </div>
         <div class="clear"></div>
-    </div>
+
+    </footer>
+    @* Đây là phần footer *@
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
