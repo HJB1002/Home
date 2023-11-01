@@ -33,16 +33,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Xem tất cả", "xemTatCa", "Products") </li>
                     @*<li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     @{ Html.RenderAction("CategoryPartial", "Categories");}
-
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <span>
                             <a href="/ShoppingCart/ShowCart">
-                                <img src="@Url.Content("C:\\Users\\PC\\Desktop\\Scream\\j\\Shop\\Shop\\Content\\image\\cart2")" style="height:30px;width:30px; margin-top:10px" />
+                                <img src="@Url.Content("C:\\Users\\PC\\Desktop\\Scream\\j\\Shop\\Shop\\Content\\image\\icon\\shopping-cart.png")"  style="height:30px;width:30px; margin-top:10px" />
                             </a>
                         </span>
                         @Html.Action("BagCart", "ShoppingCart")

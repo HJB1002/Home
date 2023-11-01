@@ -6,7 +6,7 @@
 }
 
 <h2>ShowCart</h2>
-<a href="@Url.Action("Index", "Products")">Tiếp tục mua</a>
+<a class="btn btn-default" href="@Url.Action("Index", "Products")">Tiếp tục mua</a>
 @if (Model != null)
 {
     <table class="table">
@@ -38,7 +38,7 @@
                     </td>
                     <td>@total</td>
                     <td>
-                        <a href="/ShoppingCart/RemoveCart/@item._product.ProductID">Xóa</a>
+                        <a class="btn btn-danger" href="/ShoppingCart/RemoveCart/@item._product.ProductID">Xóa</a>
                     </td>
                 </tr>
             }

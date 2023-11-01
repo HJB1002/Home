@@ -1,0 +1,55 @@
+﻿@model Shop.Models.Product
+
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .content {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        width: 100%;
+    }
+
+    .content-div {
+        flex-wrap: wrap;
+        height: fit-content;
+        width: 40%;
+    }
+
+    dd {
+        font-family: Arial;
+        font-size: 24px;
+        margin: 15px;
+    }
+</style>
+<div class="content">
+    <div class="content-div">
+        <img src="@Url.Content(Model.ImagePro.ToString())" height="400" width="450" />
+    </div>
+    <div class="content-div">
+        <dl>
+            <dd style="font-weight:bold">
+                @Html.DisplayFor(model => model.NamePro)
+            </dd>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)đ
+            </dd>
+
+            <dd>
+                Thương hiệu: @Html.DisplayFor(model => model.Category1.NameCate)
+            </dd>
+            <dd>
+                @*<a href="/ShoppingCart/AddToCart/model.Pro" class="btn btn-success">Buy</a>*@
+                @Html.ActionLink("Buy", "AddToCart", "ShoppingCart", new {id = Model.ProductID} , new {@class="btn btn-success"})
+            </dd>
+        </dl>
+    </div>
+</div>
+<h2>Mô tả</h2>
+<p style="font-family:Arial; font-size:20px">
+    @Html.DisplayFor(model => model.DecriptionPro)
+</p>
+

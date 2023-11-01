@@ -188,5 +188,18 @@ namespace Shop.Controllers
             ViewBag.Category = new SelectList(db.Categories, "IDCate", "NameCate", product.Category);
             return View(product);
         }
+        public ActionResult ProductDetail(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
     }
 }

@@ -16,7 +16,8 @@
                     <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
                     <p>@Html.DisplayFor(model => pro.NamePro)</p>
                     <p>@Html.DisplayFor(model => pro.Price)</p>
-                    <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-default">Buy</a>
+                    <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-success">Buy</a>
+                    <a href="/Products/ProductDetail/@pro.ProductID" class="btn btn-default">Xem chi tiết</a>
                 </div>
             </div>
         }
