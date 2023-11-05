@@ -54,7 +54,7 @@
             <dd>
                 @*<a href="/ShoppingCart/AddToCart/model.Pro" class="btn btn-success">Buy</a>*@
                 @Html.ActionLink("Buy", "AddToCart", "ShoppingCart", new { id = Model.ProductID }, new { @class = "btn btn-success buyButton" })
-                @*@Html.ActionLink("Add to Cart", "themVaoGioHang", "ShoppingCart", new { id = Model.ProductID }, new { @class = "btn btn-success buyButton" })*@
+                @Html.ActionLink("Add to Cart", "themGioHang", "ShoppingCart", new { id = Model.ProductID }, new { @class = "btn btn-success buyButton" })
             </dd>
         </dl>
     </div>

@@ -52,6 +52,15 @@ namespace Shop.Controllers
             }
             return RedirectToAction("ShowCart", "ShoppingCart");
         }
+        public ActionResult themGioHang(int id)
+        {
+            var _pro = database.Products.FirstOrDefault(s => s.ProductID == id);
+            if (_pro != null)
+            {
+                GetCart().AddProductCart(_pro);
+            }
+            return RedirectToAction("ProductDetail","Products", new {id});
+        }
         public ActionResult UpdateCartQuantity(FormCollection form)
         {
             Cart cart = Session["Cart"] as Cart;
