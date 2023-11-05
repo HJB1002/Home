@@ -14,8 +14,10 @@
 
     .content-div {
         flex-wrap: wrap;
-        height: fit-content;
+        max-height:400px;
         width: 40%;
+        min-width:15%;
+        border: 1px solid black;
     }
 
     dd {
@@ -23,10 +25,18 @@
         font-size: 24px;
         margin: 15px;
     }
+    .buyButton{
+        width:45%;
+        height:60px;
+        line-height:50px;
+        text-align:center;
+        font-family:Arial;
+        font-size:30px;
+    }
 </style>
 <div class="content">
     <div class="content-div">
-        <img src="@Url.Content(Model.ImagePro.ToString())" height="400" width="450" />
+        <img style="border: 1px solid lightgrey" src="@Url.Content(Model.ImagePro.ToString())" height="400" width="450" />
     </div>
     <div class="content-div">
         <dl>
@@ -43,13 +53,14 @@
             </dd>
             <dd>
                 @*<a href="/ShoppingCart/AddToCart/model.Pro" class="btn btn-success">Buy</a>*@
-                @Html.ActionLink("Buy", "AddToCart", "ShoppingCart", new {id = Model.ProductID} , new {@class="btn btn-success"})
+                @Html.ActionLink("Buy", "AddToCart", "ShoppingCart", new { id = Model.ProductID }, new { @class = "btn btn-success buyButton" })
+                @*@Html.ActionLink("Add to Cart", "themVaoGioHang", "ShoppingCart", new { id = Model.ProductID }, new { @class = "btn btn-success buyButton" })*@
             </dd>
         </dl>
     </div>
 </div>
 <h2>Mô tả</h2>
-<p style="font-family:Arial; font-size:20px">
+<p style="font-family:Arial; border:1px solid lightgrey; height:fit-content; width:80%; font-size:20px">
     @Html.DisplayFor(model => model.DecriptionPro)
 </p>
 
