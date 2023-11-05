@@ -5,8 +5,18 @@
     ViewBag.Title = "SearchOption";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>SearchOption</h2>
+<style>
+    .card-pro
+    {
+        border: 1px solid lightgrey;
+        padding: 5px 15px;
+        margin: 5px;
+    }
+    h2{
+        text-align:center;
+    }
+    </style>
+<h2>Tìm kiếm theo giá</h2>
 @using(Html.BeginForm("SearchOption", "Products"))
             {
                 <text>Từ</text> <input type="number" name="min" />
@@ -28,5 +38,4 @@
                 }
                     </div>
                 </div>
-
             }

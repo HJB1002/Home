@@ -39,11 +39,14 @@ namespace Shop.Controllers
         {
             if (category == null)
             {
+                ViewBag.Category = "Tất cả sản phẩm";
                 var productList = db.Products.OrderByDescending(x => x.NamePro);
                 return View(productList);
             }
             else
             {
+                var cate = db.Categories.Find(category);
+                ViewBag.Category = cate.NameCate;
                 var productList = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == category);
                 return View(productList);
             }
