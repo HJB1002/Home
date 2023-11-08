@@ -30,6 +30,16 @@
             background-color:whitesmoke;
             border-radius: 5px;
             }
+        .SET-Icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 100%;
+        }
+            .SET-Icon:hover {
+                background-color: #fed700;
+            }
     </style>
 </head>
 <body>
@@ -66,12 +76,14 @@
                             </p>
                          }
                         </li>
-                    <li>
-                        <span>
+                    <li>                      
+                        <span class="SET-Icon">
+                            
                             <a href="/ShoppingCart/ShowCart">
-                                <img src="@Url.Content("~/Content/image/icon/shopping-cart.png")"  style="height:30px;width:30px; margin-top:10px" />
+                                <img src="@Url.Content("~/Content/image/icon/shopping-cart.png")" style="height:30px;width:30px; margin-top:10px" />
                             </a>
                         </span>
+                         
                         @Html.Action("BagCart", "ShoppingCart")
                     </li>
                 </ul>
