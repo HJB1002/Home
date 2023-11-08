@@ -1,0 +1,41 @@
+﻿@model Shop.Models.AdminUser
+
+@{
+    ViewBag.Title = "FormLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Đăng nhập</h2>
+<style>
+    .field-validation-error {
+        color: red
+    }
+</style>
+
+@using (Html.BeginForm("LoginAcount", "LoginUser"))
+{
+    @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <td>@Html.LabelFor(model => model.ID)</td>
+            <td>@Html.TextBoxFor(model => model.ID, new {style = "field-validation-error" })</td>
+            <td>@Html.ValidationMessageFor(model => model.ID)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.PasswordUser)</td>
+            <td>@Html.PasswordFor(model => model.PasswordUser)</td>
+            <td>@Html.ValidationMessageFor(model => model.PasswordUser)</td>
+        </tr>
+        @if (ViewBag.ErrorInfo != null)
+        {
+        <p>@ViewBag.ErrorInfo</p>
+        }
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Login" />
+            </td>
+        </tr>
+    </table>
+}
+

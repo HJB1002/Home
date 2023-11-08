@@ -10,107 +10,112 @@ using Shop.Models;
 
 namespace Shop.Controllers
 {
-    public class AdminUsersController : Controller
+    public class OrderProesController : Controller
     {
         private ShopEntities db = new ShopEntities();
 
-        // GET: AdminUsers
+        // GET: OrderProes
         public ActionResult Index()
         {
-            return View(db.AdminUsers.ToList());
+            var orderProes = db.OrderProes.Include(o => o.Customer);
+            return View(orderProes.ToList());
         }
 
-        // GET: AdminUsers/Details/5
+        // GET: OrderProes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AdminUser adminUser = db.AdminUsers.Find(id);
-            if (adminUser == null)
+            OrderPro orderPro = db.OrderProes.Find(id);
+            if (orderPro == null)
             {
                 return HttpNotFound();
             }
-            return View(adminUser);
+            return View(orderPro);
         }
 
-        // GET: AdminUsers/Create
+        // GET: OrderProes/Create
         public ActionResult Create()
         {
+            ViewBag.IDCus = new SelectList(db.Customers, "IDCus", "NameCus");
             return View();
         }
 
-        // POST: AdminUsers/Create
+        // POST: OrderProes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,NameUser,RoleUser,PasswordUser")] AdminUser adminUser)
+        public ActionResult Create([Bind(Include = "ID,DateOrder,IDCus,AddressDeliverry")] OrderPro orderPro)
         {
             if (ModelState.IsValid)
             {
-                db.AdminUsers.Add(adminUser);
+                db.OrderProes.Add(orderPro);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(adminUser);
+            ViewBag.IDCus = new SelectList(db.Customers, "IDCus", "NameCus", orderPro.IDCus);
+            return View(orderPro);
         }
 
-        // GET: AdminUsers/Edit/5
+        // GET: OrderProes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AdminUser adminUser = db.AdminUsers.Find(id);
-            if (adminUser == null)
+            OrderPro orderPro = db.OrderProes.Find(id);
+            if (orderPro == null)
             {
                 return HttpNotFound();
             }
-            return View(adminUser);
+            ViewBag.IDCus = new SelectList(db.Customers, "IDCus", "NameCus", orderPro.IDCus);
+            return View(orderPro);
         }
 
-        // POST: AdminUsers/Edit/5
+        // POST: OrderProes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,NameUser,RoleUser,PasswordUser")] AdminUser adminUser)
+        public ActionResult Edit([Bind(Include = "ID,DateOrder,IDCus,AddressDeliverry")] OrderPro orderPro)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(adminUser).State = EntityState.Modified;
+                db.Entry(orderPro).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(adminUser);
+            ViewBag.IDCus = new SelectList(db.Customers, "IDCus", "NameCus", orderPro.IDCus);
+            return View(orderPro);
         }
 
-        // GET: AdminUsers/Delete/5
+        // GET: OrderProes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AdminUser adminUser = db.AdminUsers.Find(id);
-            if (adminUser == null)
+            OrderPro orderPro = db.OrderProes.Find(id);
+            if (orderPro == null)
             {
                 return HttpNotFound();
             }
-            return View(adminUser);
+            return View(orderPro);
         }
 
-        // POST: AdminUsers/Delete/5
+        // POST: OrderProes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AdminUser adminUser = db.AdminUsers.Find(id);
-            db.AdminUsers.Remove(adminUser);
+            OrderPro orderPro = db.OrderProes.Find(id);
+            db.OrderProes.Remove(orderPro);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -123,7 +128,5 @@ namespace Shop.Controllers
             }
             base.Dispose(disposing);
         }
-      
-        
     }
 }

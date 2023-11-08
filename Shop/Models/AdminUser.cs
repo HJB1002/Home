@@ -11,12 +11,37 @@ namespace Shop.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class AdminUser
     {
+
+        //public int ID { get; set; }
+        //public string NameUser { get; set; }
+        //public string RoleUser { get; set; }
+        //public string PasswordUser { get; set; }
+        [Display(Name = "Mã User")]
         public int ID { get; set; }
+
+        [Required(ErrorMessage = "Name not empty ...")]
+        [Display(Name = "Tên User")]
         public string NameUser { get; set; }
+
+        [DisplayName("V? trí")]
         public string RoleUser { get; set; }
+
+        [DisplayName("Nh?p m?t kh?u")]
+        [Required(ErrorMessage = "Pass not empty...")]
+        [DataType(DataType.Password)]
         public string PasswordUser { get; set; }
+
+        [NotMapped]
+        [Compare("PasswordUser")]
+        [DisplayName("Nh?p l?i m?t kh?u")]
+        public string ConfirmPass { get; set; }
+        [NotMapped]
+        public string ErrorLogin { get; set; }
     }
 }
