@@ -204,5 +204,20 @@ namespace Shop.Controllers
             }
             return View(product);
         }
+        public ActionResult searchByName(string name, string cate)
+        {
+            if (String.IsNullOrEmpty(name))
+            {
+                ViewBag.Category = "Tất cả sản phẩm";
+                var productList = db.Products.OrderByDescending(x => x.NamePro);
+                return RedirectToAction("xemTatCa");
+            }
+            else
+            {
+                var productList = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.NamePro.ToUpper().Contains(name.ToUpper()) && x.Category == cate);
+                return View(productList);
+            }
+
+        }
     }
 }

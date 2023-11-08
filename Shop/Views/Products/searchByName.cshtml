@@ -1,25 +1,25 @@
 ﻿@model IEnumerable<Shop.Models.Product>
-
 @{
-    ViewBag.Title = "xemTatCa";
+    ViewBag.Title = "searchByName";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <style>
     .card-pro {
         border: 1px solid lightgrey;
         padding: 5px 15px;
         margin: 5px;
     }
-    .whole-card :hover 
-    {
+
+    .whole-card :hover {
         transform: scale(1.05);
         box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
     }
-    h2{
-        text-align:center;
+
+    h2 {
+        text-align: center;
     }
 </style>
-<h2>@ViewBag.Category</h2>
 <div class="container">
     <div class="row">
         @foreach (var pro in Model)
@@ -37,3 +37,4 @@
         }
     </div>
 </div>
+

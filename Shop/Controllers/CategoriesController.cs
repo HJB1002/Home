@@ -18,10 +18,10 @@ namespace Shop.Controllers
         // GET: Categories
         public ActionResult Index(string _name)
         {
-            if(_name == null)
-            return View(db.Categories.ToList());
-            else 
-                return View(db.Categories.Where(s=>s.NameCate.Contains(_name)).ToList());
+            if (_name == null)
+                return View(db.Categories.ToList());
+            else
+                return View(db.Categories.Where(s => s.NameCate.Contains(_name)).ToList());
         }
 
         // GET: Categories/Details/5
@@ -164,5 +164,12 @@ namespace Shop.Controllers
             var cateList = database.Categories.ToList();
             return PartialView(cateList);
         }
+        public PartialViewResult CategoryPartial2()
+        {
+            List<Category> list = database.Categories.ToList();
+            ViewBag.ShowListUp = new SelectList(list, "IDCate", "NameCate", 1);
+            return PartialView(list);
+        }
+
     }
 }

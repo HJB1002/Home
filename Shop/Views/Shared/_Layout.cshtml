@@ -17,6 +17,19 @@
             width:100px;
             background-color:aquamarine;
         }
+        .form-select
+        {
+            border: 1px solid grey;
+            border-radius: 15px;
+            font-family:Arial;
+            height:100%;
+            padding: 5px;
+        }
+        .SearchBox {
+            height: max-content;
+            background-color:whitesmoke;
+            border-radius: 5px;
+            }
     </style>
 </head>
 <body>
@@ -39,10 +52,24 @@
                     @{ Html.RenderAction("CategoryPartial", "Categories");}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li style="margin-top:5px">
+                        @using (Html.BeginForm("searchByName", "Products", FormMethod.Get))
+                        {
+                            <p id="name" >
+                                {@Html.TextBox("name", null, new { id = "SearchBox", @class = "SearchBox" })}
+                                <input value="Tìm kiếm" type="submit" class="btn btn-sm btn-success" name="name" />
+                                <select name="cate" class="form-select">
+                                    <option selected value="1">Nike</option>
+                                    <option value="2">Adidas</option>
+                                    <option value="3">Jordan</option>
+                                </select>
+                            </p>
+                         }
+                        </li>
                     <li>
                         <span>
                             <a href="/ShoppingCart/ShowCart">
-                                <img src="@Url.Content("C:\\Users\\PC\\Desktop\\Scream\\j\\Shop\\Shop\\Content\\image\\icon\\shopping-cart.png")"  style="height:30px;width:30px; margin-top:10px" />
+                                <img src="@Url.Content("~/Content/image/icon/shopping-cart.png")"  style="height:30px;width:30px; margin-top:10px" />
                             </a>
                         </span>
                         @Html.Action("BagCart", "ShoppingCart")
@@ -65,17 +92,14 @@
                     <a href="/Products/SearchOption" class="btn btn-default">Search theo giá</a>
                 </li>
             </ul>
-
         </div>
+
         <div class="col-md-10" id="div-content">
             @RenderBody()
         </div>
-
     </div>
-    @*<div id="div_footer">
-        <p>&copy; @DateTime.Now.Year</p>
-    </div>*@
-    <footer style="background-color:black; color:white; padding:5px">
+    
+    <footer style="background-color:black; color:white; padding:5px; margin-top:5px;">
         <div class="col col-third text-white ">
             <h2>THÔNG TIN LIÊN HỆ </h2>
             <h3>KINGSHOES.VN Trang Thông Tin Chính Thức.</h3>
