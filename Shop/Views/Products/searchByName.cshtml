@@ -9,7 +9,15 @@
         border: 1px solid lightgrey;
         padding: 5px 15px;
         margin: 5px;
+        width: fit-content;
+        border-radius: 10px;
     }
+
+        .card-pro:hover {
+            opacity: 0.9;
+            border: 1px solid black;
+            box-shadow: 0 0 10px black;
+        }
 
     .whole-card :hover {
         transform: scale(1.05);
@@ -19,10 +27,11 @@
     h2 {
         text-align: center;
     }
-    .product-img{
-        display:block;
-        width:100%;
-        background-color:red;
+
+    .product-img img {
+        width: 150px;
+        height: 150px;
+        background-color: rgba(160, 171, 149, 0.2);
     }
 </style>
 <div class="container">
@@ -33,12 +42,12 @@
                 <div class="card-pro">
                     <p>@Html.DisplayFor(model => pro.ProductID)</p>
                     <div class="product-img">
-                    <img src="@Url.Content(pro.ImagePro)" alt="Air Force 1" title="Air Force 1" height="150" width="150" />
+                    <img src="@Url.Content(pro.ImagePro)" alt="Tên sản phẩm" title="Tên sản phẩm" height="150" width="150" />
                 </div>
                     <p>@Html.DisplayFor(model => pro.NamePro)</p>
                     <p>@Html.DisplayFor(model => pro.Price)</p>
                     <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-success">Buy</a>
-                    <a href="/Products/ProductDetail/@pro.ProductID" class="btn btn-danger">Giỏ hàng</a>
+                      <a href="/ShoppingCart/ShowCart/@pro.ProductID" class="btn btn-danger">Giỏ hàng</a>
                 </div>
             </div>
         }

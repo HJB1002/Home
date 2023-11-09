@@ -30,13 +30,16 @@
             background-color:whitesmoke;
             border-radius: 5px;
             }
-        .SET-Icon {
+        .SET-Icon, #search-btn {
             display: inline-block;
             width: 40px;
             height: 40px;
             background-color: #fff;
             border-radius: 100%;
         }
+            #search-btn:hover {
+                background-color: #fed700;
+            }
             .SET-Icon:hover {
                 background-color: #fed700;
             }
@@ -67,7 +70,8 @@
                         {
                             <p id="name" >
                                 {@Html.TextBox("name", null, new { id = "SearchBox", @class = "SearchBox" })}
-                                <input value="Tìm kiếm" type="submit" class="btn btn-sm btn-success" name="name" />
+                                @*<input value="Tìm kiếm" type="submit" class="btn btn-sm btn-success" name="name" />*@
+                                <button id="search-btn"><img src="@Url.Content("~/Content/image/icon/search-icon.png")" style="height:30px;width:30px; margin-top:5px" /></button>
                                 <select name="cate" class="form-select">
                                     <option selected value="1">Nike</option>
                                     <option value="2">Adidas</option>
