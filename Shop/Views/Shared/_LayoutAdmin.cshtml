@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        #div_footer{
+            position:fixed;
+            text-align:center;
+            bottom:0;
+            left:0;
+            padding-top:15px;
+            height:50px;
+            width:100px;
+            background-color:aquamarine;
+        }
+        .form-select
+        {
+            border: 1px solid grey;
+            border-radius: 15px;
+            font-family:Arial;
+            height:100%;
+            padding: 5px;
+        }
+        .SearchBox {
+            height: max-content;
+            background-color:whitesmoke;
+            border-radius: 5px;
+            }
+        .SET-Icon, #search-btn {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 100%;
+        }
+            #search-btn:hover {
+                background-color: #fed700;
+            }
+            .SET-Icon:hover {
+                background-color: #fed700;
+            }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Shop TTQ", "xemTatCa", "Products", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                    @*@{ Html.RenderAction("CategoryPartial", "Categories");}*@
+                    <li>@Html.ActionLink("Thương hiệu", "Index", "Categories")</li>
+                    <li>@Html.ActionLink("Sản phẩm", "Index", "Products")</li>
+                    <li>@Html.ActionLink("Đơn hàng", "Index", "OrderProes")</li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="margin-top:5px">
+                        @using (Html.BeginForm("searchByName", "Products", FormMethod.Get))
+                        {
+                            <p id="name" >
+                                {@Html.TextBox("name", null, new { id = "SearchBox", @class = "SearchBox" })}
+                                @*<input value="Tìm kiếm" type="submit" class="btn btn-sm btn-success" name="name" />*@
+                                <button id="search-btn"><img src="@Url.Content("~/Content/image/icon/search-icon.png")" style="height:30px;width:30px; margin-top:5px" /></button>
+                                <select name="cate" class="form-select">
+                                    <option selected value="1">Nike</option>
+                                    <option value="2">Adidas</option>
+                                    <option value="3">Jordan</option>
+                                </select>
+                            </p>
+                         }
+                        </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @*@RenderBody()*@
+        <hr />
+        @*<footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>*@
+    </div>
+    <div class="container-fluid body-content">
+        <div class="col-md-2">
+            <ul style="list-style-type:none">
+                <li>
+                    <a href="/Products/SearchOption" class="btn btn-default">Search theo giá</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-10" id="div-content">
+            @RenderBody()
+        </div>
+    </div>
+    
+    <footer style="background-color:black; color:white; padding:5px; margin-top:5px;">
+        <div class="col col-third text-white ">
+            <h2>THÔNG TIN LIÊN HỆ </h2>
+            <h3>KINGSHOES.VN Trang Thông Tin Chính Thức.</h3>
+            <p>⛪ Địa chỉ: 192/2 Nguyễn Thái Bình, Phường 12, Quận Tân Bình, Thành phố Hồ Chí Minh</p>
+            <p>Email : cskh.kingshoes.vn@gmail.com</p>
+            <p>
+                <div class="linh-footer link-right "><a href="https://kingshoes.vn">https://kingshoes.vn</a></div>
+                <div class="linh-footer link-right "><a href="https://twitter.com/kingshoes_vn">https://twitter.com/kingshoes_vn</a></div>
+                <div class="linh-footer link-right "><a href="https://www.instagram.com/kingshoes.vn">https://www.instagram.com/kingshoes.vn</a></div>
+                <div class="linh-footer link-right "><a href="https://www.facebook.com/Kingshoes.vn">https://www.facebook.com/Kingshoes.vn</a></div>
+                <div class="linh-footer link-right "><a href="https://www.youtube.com/c/KingShoesvn">https://www.youtube.com/c/KingShoesvn</a></div>
+                <div class="linh-footer link-right "><a href="http://bit.ly/KINGSHOES_map">http://bit.ly/KINGSHOES_map</a></div>
+                <div class="linh-footer link-right "><a href="https://www.tiktok.com">https://www.tiktok.com</a></div>
+            </p>
+            <p>☎️ Hotline Bán Hàng: 0909.300.746 - 0909.45.0001</p>
+            <p>☎️ Hotline CSKH: 0902.368.001</p>
+        </div>
+        <div class="col col-third">
+            <div class="col col-half text-white">
+                <h2>HỖ TRỢ KHÁCH HÀNG</h2>
+                <p>
+                    <div class="linh-footer link-support"><a href="https://kingshoes.vn/cham-soc-khach-hang.html">Chăm sóc khách hàng</a></div>
+                    <div class="linh-footer link-support"><a href="https://kingshoes.vn/thanh-toan.html">Thanh toán</a></div>
+                    <div class="linh-footer link-support"><a href="https://kingshoes.vn/huong-dan-mua-hang.html">Hướng dẫn mua hàng</a></div>
+                </p>
+            </div>
+
+            <div class="col col-half text-white">
+                <h2>CHÍNH SÁCH</h2>
+                <p>
+                    <div class="linh-footer link-support"><a href="https://kingshoes.vn/che-do-bao-hanh.html">Chính sách bảo hành</a></div>
+                    <div class="linh-footer link-support"><a href="https://kingshoes.vn/chinh-sach-doi-hang.html">Chính sách đổi trả</a></div>
+                    <div class="linh-footer link-support"><a href="https://kingshoes.vn/bao-mat-thong-tin.html">Bảo mật thông tin</a></div>
+                    <div class="linh-footer link-support"><a href="https://kingshoes.vn/chinh-sach-giao-nhan.html">Chính sách giao nhận</a></div>
+                </p>
+            </div>
+        </div>
+        <div class="col col-third text-white">
+            <p>Số ĐKKD: 41N8041309 cấp ngày 17/8/2018. Nơi cấp Ủy Ban Nhân Dân Quận Tân Bình. Hộ Kinh Doanh: KINGSHOES. Hotline: 0909.300.746</p>
+        </div>
+        <div class="clear"></div>
+
+    </footer>
+    @* Đây là phần footer *@
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -154,9 +154,9 @@ namespace Shop.Controllers
             }
             base.Dispose(disposing);
         }
-        public ActionResult WatchAllPro()
+        public ActionResult WatchAllPro(string cate)
         {
-            return RedirectToAction("Index", "Products");
+            return RedirectToAction("Index", "Products", new { id = cate });
         }
         ShopEntities database = new ShopEntities();
         public PartialViewResult CategoryPartial()

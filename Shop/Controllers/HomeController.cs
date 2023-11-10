@@ -26,7 +26,7 @@ namespace Shop.Controllers
 
             return View();
         }
-        public ActionResult Home()
+        public ActionResult test()
         {
             return View();
         }
@@ -34,5 +34,6 @@ namespace Shop.Controllers
         {
             return View();
         }
+
     }
 }
