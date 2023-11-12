@@ -202,7 +202,6 @@
     <Content Include="Content\image\nike-run-swift.png" />
     <Content Include="Content\image\nike-wirefly.png" />
     <Content Include="Content\image\shoes-default.png" />
-    <Content Include="Content\logo-shoes.htm" />
     <Content Include="Content\MyCSS\Nav.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
