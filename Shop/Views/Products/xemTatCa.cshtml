@@ -56,7 +56,7 @@
                     <p>@Html.DisplayFor(model => pro.NamePro)</p>
                     <p>@Html.DisplayFor(model => pro.Price)</p>
                     <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-success">Buy</a>
-                    <a href="/Products/ProductDetail/@pro.ProductID" class="btn btn-default">Giỏ hàng</a>
+                    <a href="/ShoppingCart/ShowCart/@pro.ProductID" class="btn btn-default">Giỏ hàng</a>
                 </div>
             </div>
         }
