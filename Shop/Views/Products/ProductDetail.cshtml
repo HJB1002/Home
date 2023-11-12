@@ -25,18 +25,20 @@
         font-size: 24px;
         margin: 15px;
     }
-    .buyButton{
-        width:45%;
-        height:60px;
-        line-height:50px;
-        text-align:center;
-        font-family:Arial;
-        font-size:30px;
+    .buyButton {
+        width: 45%;
+        height: 60px;
+        line-height: 50px;
+        text-align: center;
+        font-family: Arial;
+        font-size: 30px;
+        background-color: #ffc107;
+        border-radius:60px;
     }
 </style>
 <div class="content">
     <div class="content-div">
-        <img style="border: 1px solid lightgrey" src="@Url.Content(Model.ImagePro.ToString())" height="400" width="450" />
+        <img @*style="border: 1px solid lightgrey"*@ src="@Url.Content(Model.ImagePro.ToString())" height="400" width="450" />
     </div>
     <div class="content-div">
         <dl>
