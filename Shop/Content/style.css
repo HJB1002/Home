@@ -1,0 +1,11 @@
+﻿body {
+}
+/*Product page*/
+.register-form {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 500px;
+    margin: 0 auto;
+    background-color: #e6f9ff;
+}
