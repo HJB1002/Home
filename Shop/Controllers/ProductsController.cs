@@ -78,7 +78,7 @@ namespace Shop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,NamePro,DecriptionPro,Category,Price,ImagePro")] Product product)
+        public ActionResult Create([Bind(Include = "ProductID,NamePro,DecriptionPro,Category,Price,ImagePro,Quantity")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -172,7 +172,7 @@ namespace Shop.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UploadProduct([Bind(Include = "ProductID, NamePro, DecriptionPro, Category, Price, ImagePro, UploadImage")] Product product)
+        public ActionResult UploadProduct([Bind(Include = "ProductID, NamePro, DecriptionPro, Category, Price, ImagePro, UploadImage, Quantity")] Product product)
         {
             if(ModelState.IsValid)
             {
