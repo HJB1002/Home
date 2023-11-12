@@ -16,7 +16,7 @@ namespace Shop.Models
     public partial class ShopEntities : DbContext
     {
         public ShopEntities()
-            : base("name=ShopEntities")
+            : base("name=Shop")
         {
         }
     
