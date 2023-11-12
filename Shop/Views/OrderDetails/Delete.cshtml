@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <h2>Delete</h2>
@@ -27,15 +27,6 @@
         <dd>
             @Html.DisplayFor(model => model.UnitPrice)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Size)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Size)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.OrderPro.AddressDeliverry)
         </dt>

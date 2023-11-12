@@ -99,7 +99,7 @@ namespace Shop.Controllers
                     OrderDetail _orderdetail = new OrderDetail();
                     _orderdetail.IDOrder = _order.ID;
                     _orderdetail.IDProduct = item._product.ProductID;
-                    _orderdetail.UnitPrice = item._quantity;
+                    _orderdetail.UnitPrice = (double)item._product.Price;
                     _orderdetail.Quantity = item._quantity;
                     database.OrderDetails.Add(_orderdetail);
                     //foreach(var p in database.Products.Where(s=>s.ProductID == _orderdetail.IDProduct))

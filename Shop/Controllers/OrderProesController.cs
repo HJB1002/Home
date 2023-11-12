@@ -128,5 +128,10 @@ namespace Shop.Controllers
             }
             base.Dispose(disposing);
         }
+        public ActionResult DetailsOfOrder(int id)
+        {
+            var orderlist = db.OrderDetails.Include(o => o.OrderPro).Where(o => o.IDOrder == id).ToList();
+            return View(orderlist);
+        }
     }
 }
