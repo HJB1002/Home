@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using Shop.Models;
 using Antlr.Runtime.Tree;
 using System.IO;
+using PagedList;
+using PagedList.Mvc;
 
 namespace Shop.Controllers
 {
@@ -23,6 +25,7 @@ namespace Shop.Controllers
         // GET: Products
         public ActionResult Index(string category)
         {
+
             if (category == null)
             {
                 var productList = db.Products.OrderByDescending(x => x.NamePro);
@@ -34,13 +37,15 @@ namespace Shop.Controllers
                 return View(productList);
             }
         }
-        public ActionResult xemTatCa(string category)
+        public ActionResult xemTatCa(string category,int? page)
         {
+            int pageSize = 4;
+            int pageNum = (page ?? 1);
             if (category == null)
             {
                 ViewBag.Category = "Tất cả sản phẩm";
                 var productList = db.Products.OrderByDescending(x => x.NamePro);
-                return View(productList);
+                return View(productList.ToPagedList(pageNum, pageSize));
             }
             else
             {

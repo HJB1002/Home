@@ -193,6 +193,8 @@
     <Content Include="Content\image\icon\search-interface-symbol_54481.png" />
     <Content Include="Content\image\icon\shoes.png" />
     <Content Include="Content\image\icon\shopping-cart.png" />
+    <Content Include="Content\image\logo-shop.png" />
+    <Content Include="Content\image\logo2-shop.png" />
     <Content Include="Content\image\nike-air-max-97.png" />
     <Content Include="Content\image\nike-air-max-diva.png" />
     <Content Include="Content\image\nike-air-max.png" />
@@ -200,6 +202,7 @@
     <Content Include="Content\image\nike-run-swift.png" />
     <Content Include="Content\image\nike-wirefly.png" />
     <Content Include="Content\image\shoes-default.png" />
+    <Content Include="Content\logo-shoes.htm" />
     <Content Include="Content\MyCSS\Nav.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />

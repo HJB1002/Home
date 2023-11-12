@@ -43,12 +43,38 @@
             .SET-Icon:hover {
                 background-color: #fed700;
             }
+            .navbar-header .ps-logo img{
+                height:50px;
+                max-height:50px;
+            }
+        .navbar-header {
+            position: relative;
+        }
+            .navbar-header .ps-logo {
+                padding-top: 0;
+                display: inline-block;
+                line-height: 55px;
+                position: absolute;
+                top: 0;
+                left: -184px;
+                right: 0;
+                bottom: 0;
+            }
+
+       
     </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
+                <div class="header-logo">
+                    <div class="ps-logo">
+                        <a href="~/Products/xemTatCa">
+                            <img src="@Url.Content("~/Content/image/logo-shop.png")" alt="Cửa hàng giày uy tín của nhóm 24" />
+                        </a>
+                    </div>
+                </div>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
