@@ -32,6 +32,7 @@
                             <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
                             <p>@Html.DisplayFor(model => pro.NamePro)</p>
                             <p>@Html.DisplayFor(model => pro.Price)</p>
+                            <p>Size: @Html.DisplayFor(model => pro.Size)</p>
                             <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-default">Buy</a>
                         </div>
                     </div>

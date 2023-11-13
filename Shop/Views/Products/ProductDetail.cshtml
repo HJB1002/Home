@@ -53,6 +53,7 @@
             <dd>
                 Thương hiệu: @Html.DisplayFor(model => model.Category1.NameCate)
             </dd>
+            <dd>Size: @Html.DisplayFor(model => model.Size)</dd>
             <dd>
                 @*<a href="/ShoppingCart/AddToCart/model.Pro" class="btn btn-success">Buy</a>*@
                 @Html.ActionLink("Mua", "AddToCart", "ShoppingCart", new { id = Model.ProductID }, new { @class = "btn btn-success buyButton" })

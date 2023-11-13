@@ -78,7 +78,7 @@ namespace Shop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductID,NamePro,DecriptionPro,Category,Price,ImagePro,Quantity")] Product product)
+        public ActionResult Create([Bind(Include = "ProductID,NamePro,DecriptionPro,Category,Price,ImagePro,UploadImage,Quantity,Size")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -112,7 +112,7 @@ namespace Shop.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductID,NamePro,DecriptionPro,Category,Price,ImagePro,UploadImage")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductID,NamePro,DecriptionPro,Category,Price,ImagePro,UploadImage,Quantity,Size")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -172,7 +172,7 @@ namespace Shop.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UploadProduct([Bind(Include = "ProductID, NamePro, DecriptionPro, Category, Price, ImagePro, UploadImage, Quantity")] Product product)
+        public ActionResult UploadProduct([Bind(Include = "ProductID, NamePro, DecriptionPro, Category, Price, ImagePro, UploadImage, Quantity, Size")] Product product)
         {
             if(ModelState.IsValid)
             {
@@ -203,20 +203,32 @@ namespace Shop.Controllers
             }
             return View(product);
         }
-        public ActionResult searchByName(string name, string cate)
+        public ActionResult searchByName(string name, string cate, int? size)
         {
+            var productList = db.Products.ToList();
             if (String.IsNullOrEmpty(name))
             {
-                ViewBag.Category = "Tất cả sản phẩm";
-                var productList = db.Products.OrderByDescending(x => x.NamePro);
-                return RedirectToAction("xemTatCa");
-            }
-            else
-            {
-                var productList = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.NamePro.ToUpper().Contains(name.ToUpper()) && x.Category == cate);
+                if(size == null)
+                {
+                    productList = productList.OrderByDescending(x => x.NamePro).Where( x => x.Category == cate).ToList();   
+                }
+                else
+                {
+                    productList = productList.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.Size == size).ToList();
+                }
                 return View(productList);
             }
-
+            else if(!String.IsNullOrEmpty(name))
+            {
+                if(size == null)
+                {
+                    productList = productList.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.NamePro.ToUpper().Contains(name.ToUpper())).ToList();
+                }
+                else
+                    productList = productList.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.NamePro.ToUpper().Contains(name.ToUpper()) && x.Size == size).ToList();
+                return View(productList);
+            }
+            return View(productList);
         }
     }
 }

@@ -48,6 +48,7 @@
 
                      <p>@Html.DisplayFor(model => pro.NamePro)</p>
                      <p>@Html.DisplayFor(model => pro.Price)</p>
+                     <p>Size: @Html.DisplayFor(model => pro.Size)</p>
                      <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-success">Buy</a>
                      @*<a href="/Products/ProductDetail/@pro.ProductID" class="btn btn-default">Giỏ hàng</a>*@
                      @Html.ActionLink("Thêm vào giỏ hàng", "themGioHang", "ShoppingCart", new { id = pro.ProductID }, new { @class = "btn btn-success" })
