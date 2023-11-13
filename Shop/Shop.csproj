@@ -200,6 +200,7 @@
     <Content Include="Content\image\nike-run-swift.png" />
     <Content Include="Content\image\nike-wirefly.png" />
     <Content Include="Content\image\shoes-default.png" />
+    <Content Include="Content\MyCSS\CustomerRegister.css" />
     <Content Include="Content\MyCSS\Nav.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
@@ -297,10 +298,11 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Register.cshtml" />
     <Content Include="Views\OrderProes\DetailsOfOrder.cshtml" />
+    <Content Include="Views\Home\GioiThieu.cshtml" />
+    <Content Include="Views\LoginUser\LoginCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\DetailProduct\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

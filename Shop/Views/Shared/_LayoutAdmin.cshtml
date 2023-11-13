@@ -58,13 +58,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { @class = "navbar-brand" })</li>
                     @*<li>@Html.ActionLink("About", "About", "Home")</li>
                      <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     @*@{ Html.RenderAction("CategoryPartial", "Categories");}*@
-                    <li>@Html.ActionLink("Thương hiệu", "Index", "Categories")</li>
-                    <li>@Html.ActionLink("Sản phẩm", "Index", "Products")</li>
-                    <li>@Html.ActionLink("Đơn hàng", "Index", "OrderProes")</li>
+                    <li>@Html.ActionLink("Thương hiệu", "Index", "Categories", new {@class = "navbar-brand"})</li>
+                    <li>@Html.ActionLink("Sản phẩm", "Index", "Products", new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("Đơn hàng", "Index", "OrderProes", new { @class = "navbar-brand" })</li>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

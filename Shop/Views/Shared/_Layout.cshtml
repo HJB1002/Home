@@ -68,7 +68,7 @@
                     <li style="margin-top:5px">
                         @using (Html.BeginForm("searchByName", "Products", FormMethod.Get))
                         {
-                            <p id="name" >
+                            <p id="name">
                                 @Html.TextBox("name", null, new { id = "SearchBox", @class = "SearchBox" })
                                 @*<input value="Tìm kiếm" type="submit" class="btn btn-sm btn-success" name="name" />*@
                                 <button id="search-btn"><img src="@Url.Content("~/Content/image/icon/search-icon.png")" style="height:30px;width:30px; margin-top:5px" /></button>
@@ -78,18 +78,30 @@
                                     <option value="3">Jordan</option>
                                 </select>
                             </p>
-                         }
-                        </li>
-                    <li>                      
+                        }
+                    </li>
+                    <li style="margin-left: 5px ; margin-top:5px">
                         <span class="SET-Icon">
-                            
                             <a href="/ShoppingCart/ShowCart">
-                                <img src="@Url.Content("~/Content/image/icon/shopping-cart.png")" style="height:30px;width:30px; margin-top:10px" />
+                                <img src="@Url.Content("~/Content/image/icon/shopping-cart.png")" style="height:30px;width:30px; margin-top:10px;" />
                             </a>
                         </span>
-                         
+
                         @Html.Action("BagCart", "ShoppingCart")
                     </li>
+                    @if (Session["ID"] == null)
+                    {
+                        <li><a href="/Customers/Register"><span class="glyphicon glyphicon-user"></span></a></li>
+                        <li><a href="/LoginUser/LoginCustomer"><span class="glyphicon glyphicon-log-in"></span></a></li>
+                    }
+                    @*else
+            {
+                <li style="color:white; padding-top:15px">
+                    <span style="color:white"> @Session["NameCus"]</span>
+                </li>
+            }*@
+
+                    <li><a href="@Url.Action("LogOutCustomer", "LoginUser")"><span class="glyphicon glyphicon-log-out"></span></a></li>
                 </ul>
             </div>
         </div>
@@ -102,15 +114,15 @@
         </footer>*@
     </div>
     <div class="container-fluid body-content">
-        <div class="col-md-2">
+        @*<div class="col-md-2">
             <ul style="list-style-type:none">
                 <li>
                     <a href="/Products/SearchOption" class="btn btn-default">Search theo giá</a>
                 </li>
-            </ul>
-        </div>
+            </ul>   
+        </div>*@
 
-        <div class="col-md-10" id="div-content">
+        <div class="col-md-12" id="div-content">
             @RenderBody()
         </div>
     </div>
@@ -118,7 +130,7 @@
     <footer style="background-color:black; color:white; padding:5px; margin-top:5px;">
         <div class="col col-third text-white ">
             <h2>THÔNG TIN LIÊN HỆ </h2>
-            <h3>KINGSHOES.VN Trang Thông Tin Chính Thức.</h3>
+            <h3>TTQ Trang Thông Tin Chính Thức.</h3>
             <p>⛪ Địa chỉ: 192/2 Nguyễn Thái Bình, Phường 12, Quận Tân Bình, Thành phố Hồ Chí Minh</p>
             <p>Email : cskh.kingshoes.vn@gmail.com</p>
             <p>

@@ -1,0 +1,50 @@
+﻿@model Shop.Models.Customer
+
+@{
+    ViewBag.Title = "LoginCustomer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/MyCSS/CustomerRegister.css" rel="stylesheet" />
+
+<div class="register-form">
+    @using (Html.BeginForm("LoginCustomer", "LoginUser"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h2 style="text-align:center">Đăng nhập</h2>
+            <hr />
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.IDCus, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <p style="font-weight:bold; font-size:15px" class="control-label col-md-2 ">Số điện thoại</p>
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.IDCus, new {style = "feild-vadilation-error"})
+                    @Html.ValidationMessageFor(model => model.IDCus)
+                </div>
+            </div>
+         
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <p style="font-weight:bold; font-size:15px" class="control-label col-md-2 ">Mật khẩu</p>
+                <div class="col-md-10">
+                    @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+                @if(ViewBag.ErrorInfo == null)
+                {
+                    <p>@ViewBag.ErrorInfo</p>
+                }
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Đăng nhập" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

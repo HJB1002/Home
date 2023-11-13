@@ -73,7 +73,7 @@ namespace Shop.Controllers
             {
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("xemTatCa", "Product");
             }
 
             return View(customer);

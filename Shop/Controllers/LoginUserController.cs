@@ -15,6 +15,30 @@ namespace Shop.Controllers
         {
             return View();
         }
+        public ActionResult LoginCustomer()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult LoginCustomer(Customer _user)
+        {
+            var check = db.Customers.Where(s => s.IDCus == _user.IDCus && s.Password == _user.Password).FirstOrDefault();
+            if (check == null) // login sai thong tin
+            {
+                ViewBag.ErrorInfo = "Sai thông tin";
+                return View("LoginCustomer");
+            }
+
+            else
+            {
+                var cus = db.Customers.Find(_user.IDCus);
+                db.Configuration.ValidateOnSaveEnabled = false;
+                Session["ID"] = _user.IDCus;
+                Session["NameCus"] = cus.NameCus;
+                ViewBag.NameCus = _user.NameCus;
+                return RedirectToAction("xemTatCa", "Products");
+            }
+        }
         public ActionResult LoginAcount()
         {
             return View();
@@ -61,6 +85,11 @@ namespace Shop.Controllers
                 }
             }
             return View();
+        }
+        public ActionResult LogOutCustomer()
+        {
+            Session.Abandon();
+            return RedirectToAction("LoginCustomer", "LoginUser");
         }
     }
 }

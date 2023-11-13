@@ -11,12 +11,23 @@ namespace Shop.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class AdminUser
     {
+        [Required(ErrorMessage = "ID cannot be empty")]
         public int ID { get; set; }
+        [Required(ErrorMessage = "Name cannot be empty")]
         public string NameUser { get; set; }
         public string RoleUser { get; set; }
+        [Required(ErrorMessage = "Password cannt be empty")]
         public string PasswordUser { get; set; }
+        [NotMapped]
+        [Compare("PasswordUser")]
+        public string ConfirmPass { get; set; }
+        [NotMapped]
+        public string ErrorLogin { get; set; }
+
     }
 }
