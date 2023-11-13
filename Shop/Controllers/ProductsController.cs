@@ -210,23 +210,28 @@ namespace Shop.Controllers
             {
                 if(size == null)
                 {
-                    productList = productList.OrderByDescending(x => x.NamePro).Where( x => x.Category == cate).ToList();   
+                    var productList1 = db.Products.OrderByDescending(x => x.NamePro).Where( x => x.Category == cate).ToList();
+                    return View(productList1);
                 }
                 else
                 {
-                    productList = productList.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.Size == size).ToList();
+                    var productList2 = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.Size == size).ToList();
+                    return View(productList2);
                 }
-                return View(productList);
+               
             }
             else if(!String.IsNullOrEmpty(name))
             {
                 if(size == null)
                 {
-                    productList = productList.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.NamePro.ToUpper().Contains(name.ToUpper())).ToList();
+                    var productList3 = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.NamePro.ToUpper().Contains(name.ToUpper())).ToList();
+                    return View(productList3);
                 }
                 else
-                    productList = productList.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.NamePro.ToUpper().Contains(name.ToUpper()) && x.Size == size).ToList();
-                return View(productList);
+                {
+                    var productList4 = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.NamePro.ToUpper().Contains(name.ToUpper()) && x.Size == size).ToList();
+                    return View(productList4);
+                }
             }
             return View(productList);
         }
