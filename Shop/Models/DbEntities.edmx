@@ -26,10 +26,11 @@
           <Key>
             <PropertyRef Name="IDCus" />
           </Key>
-          <Property Name="IDCus" Type="int" Nullable="false" />
-          <Property Name="NameCus" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="IDCus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCus" Type="nvarchar(max)" />
+          <Property Name="PhoneCus" Type="nvarchar" MaxLength="15" />
           <Property Name="EmailCus" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -40,6 +41,7 @@
           <Property Name="IDOrder" Type="int" />
           <Property Name="Quantity" Type="int" />
           <Property Name="UnitPrice" Type="float" />
+          <Property Name="Size" Type="float" />
         </EntityType>
         <EntityType Name="OrderPro">
           <Key>
@@ -60,18 +62,9 @@
           <Property Name="Category" Type="nchar" MaxLength="20" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ImagePro" Type="nvarchar(max)" />
+          <Property Name="Size" Type="float" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <Association Name="FK__OrderDeta__IDOrd__73BA3083">
+        <Association Name="FK__OrderDeta__IDOrd__412EB0B6">
           <End Role="OrderPro" Type="Self.OrderPro" Multiplicity="0..1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -83,7 +76,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__IDPro__72C60C4A">
+        <Association Name="FK__OrderDeta__IDPro__4222D4EF">
           <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -95,7 +88,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderPro__IDCus__6FE99F9F">
+        <Association Name="FK__OrderPro__IDCus__4316F928">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="OrderPro" Type="Self.OrderPro" Multiplicity="*" />
           <ReferentialConstraint>
@@ -126,16 +119,15 @@
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderPro" EntityType="Self.OrderPro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__OrderDeta__IDOrd__73BA3083" Association="Self.FK__OrderDeta__IDOrd__73BA3083">
+          <AssociationSet Name="FK__OrderDeta__IDOrd__412EB0B6" Association="Self.FK__OrderDeta__IDOrd__412EB0B6">
             <End Role="OrderPro" EntitySet="OrderPro" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__IDPro__72C60C4A" Association="Self.FK__OrderDeta__IDPro__72C60C4A">
+          <AssociationSet Name="FK__OrderDeta__IDPro__4222D4EF" Association="Self.FK__OrderDeta__IDPro__4222D4EF">
             <End Role="Products" EntitySet="Products" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderPro__IDCus__6FE99F9F" Association="Self.FK__OrderPro__IDCus__6FE99F9F">
+          <AssociationSet Name="FK__OrderPro__IDCus__4316F928" Association="Self.FK__OrderPro__IDCus__4316F928">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="OrderPro" EntitySet="OrderPro" />
           </AssociationSet>
@@ -171,10 +163,11 @@
             <PropertyRef Name="IDCus" />
           </Key>
           <Property Name="IDCus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
-          <Property Name="NameCus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameCus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="EmailCus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="OrderProes" Relationship="Self.FK__OrderPro__IDCus__52593CB8" FromRole="Customer" ToRole="OrderPro" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneCus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -187,6 +180,7 @@
           <Property Name="UnitPrice" Type="Double" />
           <NavigationProperty Name="OrderPro" Relationship="Self.FK__OrderDeta__IDOrd__5629CD9C" FromRole="OrderDetail" ToRole="OrderPro" />
           <NavigationProperty Name="Product" Relationship="Self.FK__OrderDeta__IDPro__5535A963" FromRole="OrderDetail" ToRole="Products" />
+          <Property Name="Size" Type="Double" />
         </EntityType>
         <EntityType Name="OrderPro">
           <Key>
@@ -211,6 +205,7 @@
           <Property Name="ImagePro" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Category1" Relationship="Self.FK_Pro_Category" FromRole="Products" ToRole="Category" />
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__IDPro__5535A963" FromRole="Products" ToRole="OrderDetail" />
+          <Property Name="Size" Type="Double" />
         </EntityType>
         <Association Name="FK_Pro_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -283,18 +278,7 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="OrderDetail" EntitySet="OrderDetails" />
           </AssociationSet>
-          <EntitySet Name="sysdiagrams" EntityType="ShopModel.sysdiagram" />
         </EntityContainer>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -323,6 +307,7 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="ShopModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="PhoneCus" ColumnName="PhoneCus" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IDCus" ColumnName="IDCus" />
                 <ScalarProperty Name="NameCus" ColumnName="NameCus" />
@@ -333,6 +318,7 @@
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="ShopModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="Size" ColumnName="Size" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
                 <ScalarProperty Name="IDOrder" ColumnName="IDOrder" />
@@ -354,6 +340,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="ShopModel.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Size" ColumnName="Size" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="NamePro" ColumnName="NamePro" />
                 <ScalarProperty Name="DecriptionPro" ColumnName="DecriptionPro" />
@@ -363,18 +350,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ShopModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

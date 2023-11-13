@@ -13,7 +13,6 @@ namespace Shop.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
-
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,6 +27,7 @@ namespace Shop.Models
         public string Category { get; set; }
         public Nullable<decimal> Price { get; set; }
         public string ImagePro { get; set; }
+        public Nullable<double> Size { get; set; }
     
         public virtual Category Category1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
