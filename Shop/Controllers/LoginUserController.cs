@@ -91,5 +91,10 @@ namespace Shop.Controllers
             Session.Abandon();
             return RedirectToAction("LoginCustomer", "LoginUser");
         }
+        public ActionResult LogOutAdmin()
+        {
+            Session.Abandon();
+            return RedirectToAction("LoginAcount");
+        }
     }
 }

@@ -69,21 +69,18 @@
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li style="margin-top:5px">
-                        @using (Html.BeginForm("searchByName", "Products", FormMethod.Get))
-                        {
-                            <p id="name" >
-                                {@Html.TextBox("name", null, new { id = "SearchBox", @class = "SearchBox" })}
-                                @*<input value="Tìm kiếm" type="submit" class="btn btn-sm btn-success" name="name" />*@
-                                <button id="search-btn"><img src="@Url.Content("~/Content/image/icon/search-icon.png")" style="height:30px;width:30px; margin-top:5px" /></button>
-                                <select name="cate" class="form-select">
-                                    <option selected value="1">Nike</option>
-                                    <option value="2">Adidas</option>
-                                    <option value="3">Jordan</option>
-                                </select>
-                            </p>
-                         }
-                        </li>
+                    @if (Session["ID"] == null)
+                    {
+                        <li><a href="/LoginUser/RegisterUser"><span class="glyphicon glyphicon-user"></span></a></li>
+                        <li><a href="/LoginUser/LoginAcount"><span class="glyphicon glyphicon-log-in"></span></a></li>
+                    }
+                    else
+                    {
+                        @*<li style="color:white; padding-top:15px">
+                <span style="color:white"> @Session["NameCus"]</span>
+            </li>*@
+                        <li><a href="@Url.Action("LogOutAdmin", "LoginUser")"><span class="glyphicon glyphicon-log-out"></span></a></li>
+                    }
                 </ul>
             </div>
         </div>
