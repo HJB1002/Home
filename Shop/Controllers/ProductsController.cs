@@ -53,7 +53,7 @@ namespace Shop.Controllers
                 var cate = db.Categories.Find(category);
                 ViewBag.Category = cate.NameCate;
                 var productList = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == category);
-                return View(productList);
+                return View(productList.ToPagedList(pageNum, pageSize));
             }
         }
 
