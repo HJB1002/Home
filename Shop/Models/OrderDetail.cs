@@ -9,12 +9,9 @@
 
 namespace Shop.Models
 {
-    using Antlr.Runtime.Tree;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class OrderDetail
     {
         public int ID { get; set; }
@@ -25,8 +22,5 @@ namespace Shop.Models
     
         public virtual OrderPro OrderPro { get; set; }
         public virtual Product Product { get; set; }
-        [NotMapped]
-        public Nullable<double> TotalPrice { get => Quantity * UnitPrice;}
-      
     }
 }

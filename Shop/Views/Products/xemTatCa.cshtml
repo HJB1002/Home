@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Shop.Models.Product>
+﻿@*@model IEnumerable<Shop.Models.Product>*@
+@using Shop.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Product>
 
 @{
     ViewBag.Title = "xemTatCa";
@@ -10,27 +13,33 @@
         padding: 5px 15px;
         margin: 5px;
         width: fit-content;
-        border-radius: 10px;        
+        border-radius: 10px;
     }
+
         .card-pro:hover {
             opacity: 0.9;
             border: 1px solid black;
-            box-shadow: 0 0 10px black;          
+            box-shadow: 0 0 10px black;
         }
-        .whole-card :hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-        }
-    h2{
-        text-align:center;
+
+    .whole-card :hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
     }
+
+    h2 {
+        text-align: center;
+    }
+
     .product-img img {
         width: 150px;
         height: 150px;
         background-color: rgba(160, 171, 149, 0.2);
     }
 
-   
+    .MenuPage li {
+        display: inline;
+    }
 </style>
 <h2>@ViewBag.Category</h2>
 <div class="container">
@@ -57,3 +66,11 @@
         }
     </div>
 </div>
+Trang @(Model.PageCount<Model.PageCount?0:Model.PageNumber)/@Model.PageCount
+<div class="MenuPage">
+    @Html.PagedListPager(Model, page => Url.Action("xemTatCa", new {page=page}))
+</div>
+
+
+
+

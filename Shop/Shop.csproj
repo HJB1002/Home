@@ -178,9 +178,6 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>DbEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>DbEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +190,8 @@
     <Content Include="Content\image\icon\search-interface-symbol_54481.png" />
     <Content Include="Content\image\icon\shoes.png" />
     <Content Include="Content\image\icon\shopping-cart.png" />
+    <Content Include="Content\image\logo-shop.png" />
+    <Content Include="Content\image\logo2-shop.png" />
     <Content Include="Content\image\nike-air-max-97.png" />
     <Content Include="Content\image\nike-air-max-diva.png" />
     <Content Include="Content\image\nike-air-max.png" />
