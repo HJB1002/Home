@@ -29,6 +29,8 @@
             height: max-content;
             background-color:whitesmoke;
             border-radius: 5px;
+            padding: 5px;
+            width:200px;
             }
         .SET-Icon, #search-btn {
             display: inline-block;
@@ -48,7 +50,8 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
-            <div class="navbar-header">
+            <div class=" navbar-header">
+                <span class="navbar-brand" style="font-weight: bold; font-family: Arial; font-size: 18px; border: 2px solid white; border-radius: 50%; color: rgb(235, 192, 26); margin: 3px 10px; padding: 13px 8px;">TTQ</span>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -60,8 +63,6 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Xem tất cả", "xemTatCa", "Products") </li>
-                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     @{ Html.RenderAction("CategoryPartial", "Categories");}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -69,7 +70,7 @@
                         @using (Html.BeginForm("searchByName", "Products", FormMethod.Get))
                         {
                             <p id="name">
-                                @Html.TextBox("name", null, new { placeholder = "Tên sản phẩm" ,id = "SearchBox1", @class = "SearchBox" })
+                                @Html.TextBox("name", null, new { placeholder = "Tên sản phẩm", id = "SearchBox1", @class = "SearchBox" })
                                 @*<input value="Tìm kiếm" type="submit" class="btn btn-sm btn-success" name="name" />*@
                                 <button id="search-btn"><img src="@Url.Content("~/Content/image/icon/search-icon.png")" style="height:30px;width:30px; margin-top:5px" /></button>
                                 <select name="cate" class="form-select">
@@ -77,7 +78,7 @@
                                     <option value="2">Adidas</option>
                                     <option value="3">Jordan</option>
                                 </select>
-                                @Html.TextBox("size", null, new { placeholder = "Size" ,id = "SearchBox2", @style ="width: 50px" , @class = "SearchBox" })
+                                @Html.TextBox("size", null, new { placeholder = "Size", id = "SearchBox2", @style = "width: 50px", @class = "SearchBox" })
                             </p>
                         }
                     </li>
@@ -95,14 +96,14 @@
                         <li><a href="/Customers/Register"><span class="glyphicon glyphicon-user"></span></a></li>
                         <li><a href="/LoginUser/LoginCustomer"><span class="glyphicon glyphicon-log-in"></span></a></li>
                     }
-                    @*else
-            {
-                <li style="color:white; padding-top:15px">
-                    <span style="color:white"> @Session["NameCus"]</span>
-                </li>
-            }*@
+                    else
+                    {
+                        @*<li style="color:white; padding-top:15px">
+                        <span style="color:white"> @Session["NameCus"]</span>
+                    </li>*@
+                        <li><a href="@Url.Action("LogOutCustomer", "LoginUser")"><span class="glyphicon glyphicon-log-out"></span></a></li>
+                    }
 
-                    <li><a href="@Url.Action("LogOutCustomer", "LoginUser")"><span class="glyphicon glyphicon-log-out"></span></a></li>
                 </ul>
             </div>
         </div>

@@ -42,13 +42,14 @@
                 <div class="card-pro">
                     <p>@Html.DisplayFor(model => pro.ProductID)</p>
                     <div class="product-img">
-                    <img src="@Url.Content(pro.ImagePro)" alt="Tên sản phẩm" title="Tên sản phẩm" height="150" width="150" />
-                </div>
+                        <img src="@Url.Content(pro.ImagePro)" alt="Tên sản phẩm" title="Tên sản phẩm" height="150" width="150" />
+                    </div>
                     <p>@Html.DisplayFor(model => pro.NamePro)</p>
                     <p>@Html.DisplayFor(model => pro.Price)</p>
                     <p>Size: @Html.DisplayFor(model => pro.Size)</p>
                     <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="btn btn-success">Buy</a>
-                      <a href="/ShoppingCart/ShowCart/@pro.ProductID" class="btn btn-danger">Giỏ hàng</a>
+                    @*<a href="/ShoppingCart/ShowCart/@pro.ProductID" class="btn btn-danger">Giỏ hàng</a>*@
+                    @Html.ActionLink("Thêm vào giỏ hàng", "themGioHang", "ShoppingCart", new { id = pro.ProductID }, new { @class = "btn btn-success" })
                 </div>
             </div>
         }

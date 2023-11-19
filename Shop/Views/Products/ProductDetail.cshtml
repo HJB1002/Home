@@ -14,56 +14,59 @@
 
     .content-div {
         flex-wrap: wrap;
-        max-height:400px;
-        width: 40%;
-        min-width:15%;
-        border: 1px solid black;
+        max-height: 400px;
+        width: 45%;
+        min-width: 15%;
     }
 
     dd {
         font-family: Arial;
         font-size: 24px;
-        margin: 15px;
+        margin: 15px 5px;
     }
+
     .buyButton {
-        width: 45%;
+        width: 49%;
         height: 60px;
         line-height: 50px;
         text-align: center;
         font-family: Arial;
         font-size: 30px;
         background-color: #ffc107;
-        border-radius:60px;
+        border-radius: 60px;
     }
 </style>
-<div class="content">
-    <div class="content-div">
-        <img @*style="border: 1px solid lightgrey"*@ src="@Url.Content(Model.ImagePro.ToString())" height="400" width="450" />
-    </div>
-    <div class="content-div">
-        <dl>
-            <dd style="font-weight:bold">
-                @Html.DisplayFor(model => model.NamePro)
-            </dd>
+<div style="margin-left:50px;">
 
-            <dd>
-                @Html.DisplayFor(model => model.Price)đ
-            </dd>
+    <div class="content">
+        <div class="content-div">
+            <img style="border:1px solid black" src="@Url.Content(Model.ImagePro.ToString())" height="400" width="500" />
+        </div>
+        <div class="content-div">
+            <dl>
+                <dd style="font-weight:bold">
+                    @Html.DisplayFor(model => model.NamePro)
+                </dd>
 
-            <dd>
-                Thương hiệu: @Html.DisplayFor(model => model.Category1.NameCate)
-            </dd>
-            <dd>Size: @Html.DisplayFor(model => model.Size)</dd>
-            <dd>
-                @*<a href="/ShoppingCart/AddToCart/model.Pro" class="btn btn-success">Buy</a>*@
-                @Html.ActionLink("Mua", "AddToCart", "ShoppingCart", new { id = Model.ProductID }, new { @class = "btn btn-success buyButton" })
-                @Html.ActionLink("Thêm vào giỏ hàng", "themGioHang", "ShoppingCart", new { id = Model.ProductID }, new { @class = "btn btn-success buyButton" })
-            </dd>
-        </dl>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)đ
+                </dd>
+
+                <dd>
+                    Thương hiệu: @Html.DisplayFor(model => model.Category1.NameCate)
+                </dd>
+                <dd>Size: @Html.DisplayFor(model => model.Size)</dd>
+                <dd>
+                    @*<a href="/ShoppingCart/AddToCart/model.Pro" class="btn btn-success">Buy</a>*@
+                    @Html.ActionLink("Mua", "AddToCart", "ShoppingCart", new { id = Model.ProductID }, new { @class = "btn btn-success buyButton" })
+                    @Html.ActionLink("Thêm vào giỏ hàng", "themGioHang", "ShoppingCart", new { id = Model.ProductID }, new { @class = "btn btn-success buyButton" })
+                </dd>
+            </dl>
+        </div>
     </div>
+    <h2>Mô tả sản phẩm</h2>
+    <p style="background-color:whitesmoke ;font-family:Arial; border:1px solid black; height:fit-content; width:100%; font-size:20px">
+        @Html.DisplayFor(model => model.DecriptionPro)
+    </p>
 </div>
-<h2>Mô tả</h2>
-<p style="font-family:Arial; border:1px solid lightgrey; height:fit-content; width:80%; font-size:20px">
-    @Html.DisplayFor(model => model.DecriptionPro)
-</p>
 
