@@ -181,7 +181,6 @@
           <Property Name="UnitPrice" Type="Double" />
           <NavigationProperty Name="OrderPro" Relationship="Self.FK__OrderDeta__IDOrd__5629CD9C" FromRole="OrderDetail" ToRole="OrderPro" />
           <NavigationProperty Name="Product" Relationship="Self.FK__OrderDeta__IDPro__5535A963" FromRole="OrderDetail" ToRole="Products" />
-          <Property Name="Size" Type="Double" />
         </EntityType>
         <EntityType Name="OrderPro">
           <Key>
@@ -320,7 +319,6 @@
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="ShopModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
-                <ScalarProperty Name="Size" ColumnName="Size" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDProduct" ColumnName="IDProduct" />
                 <ScalarProperty Name="IDOrder" ColumnName="IDOrder" />
