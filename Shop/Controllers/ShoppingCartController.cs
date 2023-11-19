@@ -111,13 +111,13 @@ namespace Shop.Controllers
                 database.SaveChanges();
                 cart.ClearCart();
                 return RedirectToAction("CheckOut_Success", "ShoppingCart");
-            }
+        }
             catch
             {
                 return Content("Error checkout. Please check information of customer.... Thank for your patient");
-            }
+    }
 
-        }
+}
         public ActionResult CheckOut_Success()
         {
             return View();

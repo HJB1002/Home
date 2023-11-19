@@ -26,11 +26,10 @@
           <Key>
             <PropertyRef Name="IDCus" />
           </Key>
-          <Property Name="IDCus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameCus" Type="nvarchar(max)" />
-          <Property Name="PhoneCus" Type="nvarchar" MaxLength="15" />
+          <Property Name="IDCus" Type="int" Nullable="false" />
+          <Property Name="NameCus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="EmailCus" Type="nvarchar(max)" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -41,7 +40,6 @@
           <Property Name="IDOrder" Type="int" />
           <Property Name="Quantity" Type="int" />
           <Property Name="UnitPrice" Type="float" />
-          <Property Name="Size" Type="float" />
         </EntityType>
         <EntityType Name="OrderPro">
           <Key>
@@ -65,7 +63,7 @@
           <Property Name="Quantity" Type="int" />
           <Property Name="Size" Type="int" />
         </EntityType>
-        <Association Name="FK__OrderDeta__IDOrd__412EB0B6">
+        <Association Name="FK__OrderDeta__IDOrd__73BA3083">
           <End Role="OrderPro" Type="Self.OrderPro" Multiplicity="0..1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -77,7 +75,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderDeta__IDPro__4222D4EF">
+        <Association Name="FK__OrderDeta__IDPro__72C60C4A">
           <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
           <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -89,7 +87,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderPro__IDCus__4316F928">
+        <Association Name="FK__OrderPro__IDCus__6FE99F9F">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="OrderPro" Type="Self.OrderPro" Multiplicity="*" />
           <ReferentialConstraint>
@@ -120,15 +118,15 @@
           <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderPro" EntityType="Self.OrderPro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__OrderDeta__IDOrd__412EB0B6" Association="Self.FK__OrderDeta__IDOrd__412EB0B6">
+          <AssociationSet Name="FK__OrderDeta__IDOrd__73BA3083" Association="Self.FK__OrderDeta__IDOrd__73BA3083">
             <End Role="OrderPro" EntitySet="OrderPro" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__IDPro__4222D4EF" Association="Self.FK__OrderDeta__IDPro__4222D4EF">
+          <AssociationSet Name="FK__OrderDeta__IDPro__72C60C4A" Association="Self.FK__OrderDeta__IDPro__72C60C4A">
             <End Role="Products" EntitySet="Products" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderPro__IDCus__4316F928" Association="Self.FK__OrderPro__IDCus__4316F928">
+          <AssociationSet Name="FK__OrderPro__IDCus__6FE99F9F" Association="Self.FK__OrderPro__IDCus__6FE99F9F">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="OrderPro" EntitySet="OrderPro" />
           </AssociationSet>
@@ -164,11 +162,10 @@
             <PropertyRef Name="IDCus" />
           </Key>
           <Property Name="IDCus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
-          <Property Name="NameCus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameCus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EmailCus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="OrderProes" Relationship="Self.FK__OrderPro__IDCus__52593CB8" FromRole="Customer" ToRole="OrderPro" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneCus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -308,7 +305,6 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="ShopModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="PhoneCus" ColumnName="PhoneCus" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IDCus" ColumnName="IDCus" />
                 <ScalarProperty Name="NameCus" ColumnName="NameCus" />

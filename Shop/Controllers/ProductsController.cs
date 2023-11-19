@@ -45,7 +45,7 @@ namespace Shop.Controllers
             if (category == null)
             {
                 ViewBag.Category = "Tất cả sản phẩm";
-                var productList = db.Products.OrderByDescending(x => x.NamePro);
+                var productList = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Quantity > 0);
                 return View(productList.ToPagedList(pageNum,pageSize));
             }
             else
@@ -216,12 +216,12 @@ namespace Shop.Controllers
             {
                 if(size == null)
                 {
-                    var productList1 = db.Products.OrderByDescending(x => x.NamePro).Where( x => x.Category == cate).ToList();
+                    var productList1 = db.Products.OrderByDescending(x => x.NamePro).Where( x => x.Category == cate && x.Quantity > 0).ToList();
                     return View(productList1);
                 }
                 else
                 {
-                    var productList2 = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.Size == size).ToList();
+                    var productList2 = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.Size == size && x.Quantity > 0).ToList();
                     return View(productList2);
                 }
                
@@ -230,16 +230,17 @@ namespace Shop.Controllers
             {
                 if(size == null)
                 {
-                    var productList3 = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.NamePro.ToUpper().Contains(name.ToUpper())).ToList();
+                    var productList3 = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.Quantity > 0 && x.NamePro.ToUpper().Contains(name.ToUpper())).ToList();
                     return View(productList3);
                 }
                 else
                 {
-                    var productList4 = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.NamePro.ToUpper().Contains(name.ToUpper()) && x.Size == size).ToList();
+                    var productList4 = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == cate && x.Quantity > 0 && x.NamePro.ToUpper().Contains(name.ToUpper()) && x.Size == size).ToList();
                     return View(productList4);
                 }
             }
             return View(productList);
         }
+     
     }
 }

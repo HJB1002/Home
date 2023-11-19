@@ -27,7 +27,10 @@ namespace Shop.Models
                     _product = _pro,
                     _quantity = _quan
                 });
-            else item._quantity += _quan;
+            else if(_pro.Quantity > item._quantity)
+            {
+                item._quantity += _quan;
+            }
         }
         public int Total_quantity() { return items.Sum(s => s._quantity); }
         public decimal Total_Price()
@@ -40,7 +43,7 @@ namespace Shop.Models
             var item = items.Find(s => s._product.ProductID == id);
             if (item != null)
             {
-                if (items.Find(s => s._product.Quantity > _newquan) != null)
+                if (items.Find(s => s._product.Quantity >= _newquan) != null)
                     item._quantity = _newquan;
                 else item._quantity = 1;
             }
