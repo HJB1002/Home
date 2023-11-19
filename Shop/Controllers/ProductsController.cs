@@ -40,7 +40,7 @@ namespace Shop.Controllers
         }
         public ActionResult xemTatCa(string category,int? page)
         {
-            int pageSize = 4;
+            int pageSize = 16;
             int pageNum = (page ?? 1);
             if (category == null)
             {
