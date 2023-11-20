@@ -26,7 +26,7 @@ namespace Shop.Controllers
         // GET: Products
         public ActionResult Index(string category)
         {
-
+            ViewBag.Category = new SelectList(db.Categories, "IDCate", "NameCate");
             if (category == null)
             {
                 var productList = db.Products.OrderByDescending(x => x.NamePro);

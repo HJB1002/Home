@@ -5,30 +5,35 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Sản phẩm</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" })
-    @Html.ActionLink("Create New (with image)", "UploadProduct", null, new {@class = "btn btn-default"})
+    @Html.ActionLink("Create New (with image)", "UploadProduct", null, new { @class = "btn btn-default" })
+
 </p>
+@using (Html.BeginForm("Index", "Products", FormMethod.Get))
+{
+    @Html.DropDownList("Category", null, htmlAttributes: new { @class = "form-control" })
+    <input type="submit" value="Cập nhật" class="btn btn-default" />
 <table class="table">
     <tr>
         <th>
-            @*@Html.DisplayNameFor(model => model.NamePro)*@ Name
+            @*@Html.DisplayNameFor(model => model.NamePro)*@ Tên sản phẩm
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.DecriptionPro)*@ Decription
+            @*@Html.DisplayNameFor(model => model.DecriptionPro)*@ Miêu tả
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Price)*@ Price
+            @*@Html.DisplayNameFor(model => model.Price)*@ Giá
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.ImagePro)*@ Image
+            @*@Html.DisplayNameFor(model => model.ImagePro)*@ Ảnh
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Category1.NameCate)*@ Category
+            @*@Html.DisplayNameFor(model => model.Category1.NameCate)*@ Loại hàng
         </th>
-        <th>Quantity</th>
+        <th>Số lượng</th>
         <th>Size</th>
         <th></th>
     </tr>
@@ -67,3 +72,4 @@
     }
 
 </table>
+}
