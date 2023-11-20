@@ -11,7 +11,8 @@ namespace Shop.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class OrderDetail
     {
         public int ID { get; set; }
@@ -22,5 +23,7 @@ namespace Shop.Models
     
         public virtual OrderPro OrderPro { get; set; }
         public virtual Product Product { get; set; }
+        [NotMapped]
+        public Nullable<double> TotalPrice { get => UnitPrice * Quantity; }
     }
 }

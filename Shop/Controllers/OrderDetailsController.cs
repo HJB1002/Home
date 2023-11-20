@@ -121,7 +121,7 @@ namespace Shop.Controllers
             OrderDetail orderDetail = db.OrderDetails.Find(id);
             db.OrderDetails.Remove(orderDetail);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "OrderProes");
         }
 
         protected override void Dispose(bool disposing)
