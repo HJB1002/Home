@@ -40,7 +40,7 @@ namespace Shop.Controllers
         }
         public ActionResult xemTatCa(string category,int? page)
         {
-            int pageSize = 4;
+            int pageSize = 16;
             int pageNum = (page ?? 1);
             if (category == null)
             {
@@ -53,7 +53,7 @@ namespace Shop.Controllers
                 var cate = db.Categories.Find(category);
                 ViewBag.Category = cate.NameCate;
                 var productList = db.Products.OrderByDescending(x => x.NamePro).Where(x => x.Category == category);
-                return View(productList);
+                return View(productList.ToPagedList(pageNum, pageSize));
             }
         }
 
