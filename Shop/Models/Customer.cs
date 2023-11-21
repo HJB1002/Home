@@ -20,11 +20,11 @@ namespace Shop.Models
         {
             this.OrderProes = new HashSet<OrderPro>();
         }
-        [Required(ErrorMessage ="SDT khong hop le")]
+        [Required(ErrorMessage ="SDT không h?p l?")]
         public int IDCus { get; set; }
         public string NameCus { get; set; }
         public string EmailCus { get; set; }
-        [Required(ErrorMessage ="Mat khau khong hop le")]
+        [Required(ErrorMessage ="M?t kh?u không h?p l?")]
         public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

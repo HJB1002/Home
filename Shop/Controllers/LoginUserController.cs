@@ -58,7 +58,7 @@ namespace Shop.Controllers
                 db.Configuration.ValidateOnSaveEnabled = false;
                 Session["ID"] = _user.ID;
                 Session["PasswordUser"] = _user.PasswordUser;
-                return RedirectToAction("Index", "Product");
+                return RedirectToAction("Index", "Products");
             }
         }
         public ActionResult RegisterUser()
@@ -76,7 +76,7 @@ namespace Shop.Controllers
                     db.Configuration.ValidateOnSaveEnabled = false;
                     db.AdminUsers.Add(_user);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("LoginAccount", "LoginUser");
                 }
                 else
                 {

@@ -5,22 +5,19 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Khách hàng</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
-        <th>@Html.DisplayNameFor(model => model.IDCus)</th>
+        <th>Số điện thoại</th>
         <th>
-            @Html.DisplayNameFor(model => model.NameCus)
+            Tên khách hàng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
+            Mật khẩu
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EmailCus)
+            Email
         </th>
         <th></th>
     </tr>
@@ -39,11 +36,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.EmailCus)
         </td>
-        <td>
+        @*<td>
             @Html.ActionLink("Edit", "Edit", new { id=item.IDCus }, new {@class = "btn btn-default"}) |
             @Html.ActionLink("Details", "Details", new { id=item.IDCus }, new { @class = "btn btn-default" }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.IDCus }, new { @class = "btn btn-default" })
-        </td>
+        </td>*@
     </tr>
 }
 

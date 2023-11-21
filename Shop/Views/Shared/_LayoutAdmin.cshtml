@@ -66,7 +66,8 @@
                     <li>@Html.ActionLink("Thương hiệu", "Index", "Categories", "", new {@class = "navbar-brand"})</li>
                     <li>@Html.ActionLink("Sản phẩm", "Index", "Products", "", new { @class = "navbar-brand" })</li>
                     <li>@Html.ActionLink("Đơn hàng", "Index", "OrderProes", "", new { @class = "navbar-brand" })</li>
-
+                    <li>@Html.ActionLink("Admin", "Index", "AdminUsers", "", new {@class = "navbar-brand"})</li>
+                    <li>@Html.ActionLink("Người dùng", "Index", "Customer", "", new {@class = "navbar-brand"})</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Session["ID"] == null)

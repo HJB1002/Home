@@ -18,7 +18,6 @@
         max-height: 400px;
         width: 40%;
         min-width: 15%;
-        border: 1px solid black;
     }
 
     dd {
@@ -98,7 +97,7 @@
 </style>
 <div class="content">
     <div class="content-div">
-        <img @*style="border: 1px solid lightgrey"*@ src="@Url.Content(Model.ImagePro.ToString())" height="400" width="450" />
+        <img style="border: 1px solid black" src="@Url.Content(Model.ImagePro.ToString())" height="400" width="450" />
     </div>
     <div class="content-div">
         <div class="stars">
@@ -140,5 +139,5 @@
     <p style="background-color:whitesmoke ;font-family:Arial; border:1px solid black; height:fit-content; width:100%; font-size:20px">
         @Html.DisplayFor(model => model.DecriptionPro)
     </p>
-</div>
+
 

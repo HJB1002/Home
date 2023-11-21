@@ -50,9 +50,19 @@ namespace Shop.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Customers.Add(customer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var check_ID = db.Customers.Find(customer.IDCus);
+                if (check_ID == null)
+                {
+                    db.Configuration.ValidateOnSaveEnabled = false;
+                    db.Customers.Add(customer);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.ErrorRegister = "Số điện thoại đã được đăng kí";
+                    return View();
+                }
             }
 
             return View(customer);
@@ -69,13 +79,21 @@ namespace Shop.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register([Bind(Include = "IDCus,NameCus,Password,EmailCus")] Customer customer)
         {
-            if (ModelState.IsValid)
-            {
-                db.Customers.Add(customer);
-                db.SaveChanges();
-                return RedirectToAction("xemTatCa", "Product");
-            }
-
+                if (ModelState.IsValid)
+                {
+                    var check_ID = db.Customers.Find(customer.IDCus);
+                    if (check_ID == null)
+                    {
+                        db.Customers.Add(customer);
+                        db.SaveChanges();
+                        return RedirectToAction("LoginCustomer", "LoginUser");
+                    }
+                    else
+                    {
+                        ViewBag.ErrorRegister = "Số điện thoại đã được đăng kí";
+                        return View();
+                    }
+                }
             return View(customer);
         }
 
